@@ -1,0 +1,57 @@
+atom,is_supported,true_score,false_score,confidence,pred,ground_truth
+"Osama bin Laden was born on March 10, 1957.",1,0.999999892,7.15E-08,0.999999892,1,1
+"Osama bin Laden was born in Riyadh, Saudi Arabia.",1,0.999992528,7.39E-06,0.999992528,1,1
+Osama bin Laden was born into a wealthy family.,1,0.999999903,2.11E-08,0.999999903,1,1
+Osama bin Laden's family owned a multinational construction business.,1,0.999999582,2.07E-07,0.999999582,1,1
+He was the 17th of 52 children of Mohammed bin Laden.,0,0,0.996767185,0.996767185,0,1
+Mohammed bin Laden was a self-made billionaire.,1,0.999825632,0.000173962,0.999825632,1,1
+Mohammed bin Laden immigrated from Yemen as a laborer.,0,0.000235525,0.999661931,0.999661931,0,1
+Mohammed bin Laden rose to direct major construction projects.,0,0.005516447,0.976844674,0.976844674,0,1
+The construction projects were for the Saudi royal family.,1,0.760625468,0.188469931,0.760625468,1,1
+Bin Laden received a religiously focused education.,1,0.99999546,4.39E-06,0.99999546,1,1
+Bin Laden's education included Islamic studies.,1,0.999994848,5.02E-06,0.999994848,1,-1
+Bin Laden's education included Arabic literature.,0,5.43E-06,0.999994402,0.999994402,0,0
+Bin Laden's education included mathematics.,0,9.90E-06,0.999989931,0.999989931,0,0
+He attended King Abdulaziz University.,1,0.999999878,2.61E-08,0.999999878,1,0
+King Abdulaziz University is in Jeddah.,1,0.999981128,1.84E-05,0.999981128,1,0
+He studied economics.,1,0.999999642,2.79E-07,0.999999642,1,1
+He studied business administration.,1,0.999997734,2.09E-06,0.999997734,1,1
+He spent time at a university.,1,0.999999847,2.70E-08,0.999999847,1,1
+He was exposed to radical Islamic teachings.,1,0.999781825,0.000209851,0.999781825,1,1
+His exposure to radical Islamic teachings occurred during his time at university.,0,0.036036333,0.960839382,0.960839382,0,1
+The Soviet Union invaded Afghanistan in 1979.,1,0.999871294,0.000120541,0.999871294,1,0
+"Bin Laden joined the Afghan resistance, known as the mujahideen.",1,0.99999984,5.28E-08,0.99999984,1,0
+Bin Laden saw the Soviet Union's invasion of Afghanistan as an act of aggression against Islam.,1,0.999979546,2.00E-05,0.999979546,1,1
+He had wealth and connections.,1,0.999999779,5.80E-08,0.999999779,1,1
+He used his wealth and connections to fund the mujahideen.,1,0.999999801,3.81E-08,0.999999801,1,1
+He later formed the militant organization al-Qaeda.,1,0.999999792,5.55E-08,0.999999792,1,1
+Al-Qaeda was formed in 1988.,1,0.999999811,9.51E-08,0.999999811,1,1
+The Soviets withdrew from Afghanistan in 1989.,1,0.999999677,1.41E-07,0.999999677,1,1
+Bin Laden returned to Saudi Arabia.,1,0.999998992,8.83E-07,0.999998992,1,1
+Bin Laden's return to Saudi Arabia happened after the Soviet withdrawal from Afghanistan.,1,0.999999675,2.40E-07,0.999999675,1,1
+He criticized the Saudi monarchy.,1,0.999999886,3.22E-08,0.999999886,1,1
+His criticism led to his exile.,0,0.000852742,0.999147131,0.999147131,0,1
+He was exiled to Sudan.,1,0.998245323,0.001754615,0.998245323,1,1
+His exile happened in 1992.,1,0.99999727,2.64E-06,0.99999727,1,1
+He was in Sudan.,1,0.999999584,3.08E-07,0.999999584,1,1
+He continued to orchestrate violent acts.,1,0.999998897,5.42E-07,0.999998897,1,1
+The violent acts were against Western targets.,1,0.999998125,1.61E-06,0.999998125,1,1
+Sudan expelled bin Laden in 1996.,1,0.999961253,3.86E-05,0.999961253,1,1
+The expulsion of bin Laden from Sudan occurred under international pressure.,1,0.999997652,2.24E-06,0.999997652,1,1
+Bin Laden returned to Afghanistan after being expelled from Sudan.,1,0.999998481,1.40E-06,0.999998481,1,1
+Bin Laden received protection from the Taliban in Afghanistan.,0,0.005134422,0.994743679,0.994743679,0,1
+Bin Laden is infamous.,1,0.999999704,1.56E-07,0.999999704,1,1
+"Bin Laden orchestrated the September 11, 2001, terrorist attacks on the United States.",1,0.999999788,2.96E-08,0.999999788,1,1
+"The September 11, 2001, terrorist attacks on the United States killed nearly 3,000 people.",1,0.999999617,1.20E-07,0.999999617,1,1
+There were attacks that preceded the U.S. launching a war in Afghanistan.,1,0.999999612,2.50E-07,0.999999612,1,1
+The U.S. launched a war in Afghanistan.,1,0.999996054,2.32E-06,0.999996054,1,1
+The purpose of the U.S. war in Afghanistan was to dismantle al-Qaeda.,0,0.160658385,0.839340216,0.839340216,0,-1
+The U.S. aimed to capture bin Laden during the war in Afghanistan.,1,0.999998065,1.79E-06,0.999998065,1,1
+There was a nearly decade-long manhunt for bin Laden.,1,0.999999568,1.70E-07,0.999999568,1,1
+Bin Laden was killed by U.S. Navy SEALs.,1,0.999999771,3.14E-08,0.999999771,1,1
+The killing of bin Laden occurred in a raid.,1,0.999999314,3.47E-07,0.999999314,1,1
+"The raid took place on his compound in Abbottabad, Pakistan.",1,0.99999969,4.31E-08,0.99999969,1,1
+"The raid happened on May 2, 2011.",1,0.999999709,4.84E-08,0.999999709,1,0
+The man died.,1,0.999887336,0.00011177,0.999887336,1,1
+His death marked the end of one of the most extensive manhunts in history.,1,0.999997861,1.84E-06,0.999997861,1,1
+His death dealt a significant blow to al-Qaeda.,1,0.999995138,3.96E-06,0.999995138,1,1
