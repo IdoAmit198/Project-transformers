@@ -5,7 +5,9 @@ In this work, we evaluated Deocder-only text generative models' ranking abilitie
 We define the term 'concept' and make the evaluation using that granularity of text segment.
 
 ## Install
-1. Clone this repository and install requirements:
+0. Optional - It is recommended to create an environment. One can use Venv or Conda for this.
+   
+2. Clone this repository and install requirements:
 ```
 git clone https://github.com/IdoAmit198/Project-transformers.git
 pip install -r requirements.txt
