@@ -5,17 +5,24 @@ In this work, we evaluated Deocder-only text generative models' ranking abilitie
 We define the term 'concept' and make the evaluation using that granularity of text segment.
 
 ## Install
-1. Clone this repository:
+1. Clone this repository and install requirements:
 ```
 git clone https://github.com/IdoAmit198/Project-transformers.git
+pip install -r requirements.txt
 ```
-3. clone the modified FActScore repository and install its requirements:
+2. clone the modified FActScore repository and install its requirements:
 ```
 git clone -b working https://github.com/IdoAmit198/FActScore-Ido.git
-cd FActScore-Ido && pip install -e .
-
+cd FActScore-Ido && pip install .
+pip install -r requirements.txt
 ```
+The FActScore requirements consist of an un-updated version of OpenAI. Thus, we modified the files and so we require the newer OpenAI version:
+```
+pip install -U openai
+```
+3. Follow the `Download the data` section in the `FActScore-Ido` repository, to download the Wikidata database.
 
+Warning: The database requires about ~22GB of space and might take time to download.
 
 ## How to run
 1. First, you would like to process the data. For that purpose, we've created the script `data_pipeline.py`, which does the following:
@@ -41,3 +48,6 @@ Then, run the following:
 ```
 python uncertainty_estimation.py
 ```
+### Warnings:
+1. In an attempt to reproduce our results, when running with `Mixtral-8x7B-Instruct-v0.1` model, one should have at least 120GB of GPU RAM. The code should work in a distributed manner, as long as you have enough space.
+2. To access the `Mixtral-8x7B-Instruct-v0.1` and `Meta-Llama-3-8B-Instruct` models, one must have permission from HuggingFace. The access request can be made on the model pages. Once you have access, follow HuggingFace instructions to log in to your account in the working environment.
