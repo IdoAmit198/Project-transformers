@@ -5,7 +5,11 @@ In this work, we evaluated Deocder-only text generative models' ranking abilitie
 We define the term 'concept' and make the evaluation using that granularity of text segment.
 
 ## Install
-1. clone the modified FActScore repository and install its requirements:
+1. Clone this repository:
+```
+git clone https://github.com/IdoAmit198/Project-transformers.git
+```
+3. clone the modified FActScore repository and install its requirements:
 ```
 git clone -b working https://github.com/IdoAmit198/FActScore-Ido.git
 cd FActScore-Ido && pip install -e .
