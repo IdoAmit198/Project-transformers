@@ -5,6 +5,13 @@ In this work, we evaluated Deocder-only text generative models' ranking abilitie
 We define the term 'concept' and make the evaluation using that granularity of text segment.
 
 ## Install
+1. clone the modified FActScore repository and install its requirements:
+```
+git clone -b working https://github.com/IdoAmit198/FActScore-Ido.git
+cd FActScore-Ido && pip install -e .
+
+```
+
 
 ## How to run
 1. First, you would like to process the data. For that purpose, we've created the script `data_pipeline.py`, which does the following:
