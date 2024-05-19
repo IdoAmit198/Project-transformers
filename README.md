@@ -31,6 +31,7 @@ Warning: The database requires about ~22GB of space and might take time to downl
    1. Extract entities from the database.
    2. Given a subjetced LLM, generate passages about each entity.
    3. Segment the passages into concepts, in two steps. The first is manual to split into sentences while the second uses GPT-4o to segment a sentence into concepts, based on our definition.
+   4. Use selective prediction ontop of FactScore for factuality labeling the generated concepts.
 
 To run, first, modify the desired model and output path in the `data_pipeline.py` script in the main() function.
 
