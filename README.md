@@ -26,7 +26,7 @@ pip install -U openai
 
 Warning: The database requires about ~22GB of space and might take time to download.
 
-4. Our method was tested while utilizing GPT-4o model of OpenAI. To use OpenAI models, insert your API-Key in the file `my_open_ai_key.txt`. Alternatively, one can use open-source model by modifying our calls to OpenAI in the two scripts `data_pipeline.py` and `uncertainty_estimation.py`, and call FActScore with Llama instead of GPT-4.
+4. Keys: Our method was tested while utilizing GPT-4o model of OpenAI. To use OpenAI models, insert your API-Key in the file `my_open_ai_key.txt`. Alternatively, one can use open-source model by modifying our calls to OpenAI in the two scripts `data_pipeline.py` and `uncertainty_estimation.py`, and call FActScore with Llama instead of GPT-4. Additionaly, to reproduce our results, or even use Llama as an alternative to OpenAI models, you should login to HuggingFace hub. To do so, insert your HuggingFace API-key in the file `my_HF_key.txt`. More details are at the bottom.
 
 ## How to run
 1. First, you would like to process the data. For that purpose, we've created the script `data_pipeline.py`, which does the following:
