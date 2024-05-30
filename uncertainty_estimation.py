@@ -193,7 +193,10 @@ if __name__ == '__main__':
     model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
     # concate_and_compute(f'selective_concepts/{model_name}')
     # exit()
-    HF_key = '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'
+    # HF_key = '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'
+    HF_key_path = "my_HF_key.txt"
+    with open(HF_key_path, 'r') as f:
+        HF_key = f.readline()
     login(HF_key)
     titles = get_titles()
     # Compute logprobs for concepts in each title

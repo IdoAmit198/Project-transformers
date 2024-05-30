@@ -173,8 +173,36 @@ def get_titles():
     """
     return ["Osama bin Laden", "Barack Obama", "Donald Trump", "Freddie Mercury", "Elon Musk", "Albert Einstein", "Isaac Newton", 'The Beatles', 'World War II',  'American Civil War', "Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", 'Industrial Revolution', "Marilyn Monroe", "Cleopatra", "Elizabeth II", "Napoleon", "Julius Caesar", "Alexander the Great"]
 
+def compute_number_of_concepts(concepts_dir_path):
+    """
+    Given a path to a dir contains csv files with concepts, return the sum of concepts in the files.
+    """
+    total_concepts = 0
+    for file in os.listdir(concepts_dir_path):
+        df = pd.read_csv(f'{concepts_dir_path}/{file}')
+        total_concepts += len(df)
+    return total_concepts
+
+def count_non_factual_concepts(concepts_dir_path):
+    """
+    Given a path to a dir contains csv files with concepts, return the sum of non-factual concepts in the files.
+    """
+    total_non_factual_concepts = 0
+    for file in os.listdir(concepts_dir_path):
+        df = pd.read_csv(f'{concepts_dir_path}/{file}')
+        total_non_factual_concepts += len(df[df['ground_truth'] == 0])
+    return total_non_factual_concepts
+
 ## Modify the code to create a unique csv file for each title, instead of the current code.
 if __name__ == '__main__':
+    # dir = 'concepts/Llama'
+    # selective_dir = 'selective_concepts/meta-llama/Meta-Llama-3-8B-Instruct'
+    # dir = 'concepts/mistralai/Mixtral-8x7B-Instruct-v0.1'
+    # selective_dir = 'selective_concepts/mistralai/Mixtral-8x7B-Instruct-v0.1'
+    # print(f"number of concepts in {dir} is: {compute_number_of_concepts(dir)}")
+    # print(f"number of concepts in {selective_dir} is: {compute_number_of_concepts(selective_dir)}")
+    # print(f"number of non-factual concepts in {selective_dir} is: {count_non_factual_concepts(selective_dir)}")
+    # exit()
     # model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
     model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
     titles = get_titles()
