@@ -22,5 +22,17 @@
     "unc_var_logprob_no_stopwords": 0.622093023255814,
     "unc_entropy_no_stopwords": 0.5058139534883721,
     "unc_log_likelihood_no_stopwords": 0.37790697674418605,
-    "unc_sqrt_normalized_log_likelihood_no_stopwords": 0.41569767441860467
+    "unc_sqrt_normalized_log_likelihood_no_stopwords": 0.41569767441860467,
+    "unc_exp_mean_logprobs": 0.5203488372093024,
+    "unc_exp_mean_logprobs_no_stopwords": 0.5319767441860465,
+    "unc_Inv_PPL": 0.4796511627906977,
+    "unc_Inv_entropy": 0.4738372093023256,
+    "unc_Inv_PPL_no_stopwords": 0.4680232558139535,
+    "unc_Inv_entropy_no_stopwords": 0.4941860465116279,
+    "unc_Inv_entropy_normalized_v2": 0.5319767441860465,
+    "unc_Inv_entropy_normalized": 0.625,
+    "unc_seq_len": 0.622093023255814,
+    "unc_Inv_entropy_normalized_v2_no_stopwords": 0.502906976744186,
+    "unc_Inv_entropy_normalized_no_stopwords": 0.5290697674418605,
+    "unc_seq_len_no_stopwords": 0.5813953488372093
 }

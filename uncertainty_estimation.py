@@ -13,6 +13,8 @@ from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import pickle
 
+from huggingface_hub import login
+
 ###
 # Methodology of our unceretainty estimation 
 # 0. Collect entities from the DB.
@@ -156,9 +158,14 @@ def compute_uncertainty_metrics(concepts_logprobs_dict:dict, concepts_file_path:
             df.at[idx, f'unc_median_prob{s}'] = np.median(probs)
             df.at[idx, f'unc_median_logprobs{s}'] = np.median(_logprobs)
             df.at[idx, f'unc_PPL{s}'] = np.exp(-np.mean(_logprobs))
+            df.at[idx, f'unc_Inv_PPL{s}'] = 1/(np.exp(-np.mean(_logprobs)))
+            # df.at[idx, f'unc_PPL{s}'] = np.exp(-np.sum(probs*_logprobs))
             df.at[idx, f'unc_var_prob{s}'] = np.var(probs)
             df.at[idx, f'unc_var_logprob{s}'] = np.var(_logprobs)
-            df.at[idx, f'unc_entropy{s}'] = -np.sum(probs*_logprobs)
+            df.at[idx, f'unc_Inv_entropy{s}'] = 1/(-np.sum(probs*_logprobs))
+            df.at[idx, f'unc_Inv_entropy_normalized_v2{s}'] = np.sqrt(len(_logprobs))/(-np.sum(probs*_logprobs))
+            df.at[idx, f'unc_Inv_entropy_normalized{s}'] = 1/(-np.mean(probs*_logprobs))
+            df.at[idx, f'unc_seq_len{s}'] = len(_logprobs)
             df.at[idx, f'unc_log_likelihood{s}'] = np.sum(_logprobs)
             df.at[idx, f'unc_sqrt_normalized_log_likelihood{s}'] = np.sum(_logprobs)/np.sqrt(len(_logprobs))
 
@@ -180,28 +187,28 @@ def concate_and_compute(dir_path:str):
         json.dump(AUROC_dict, f, indent=4)
                 
 
-
 if __name__ == '__main__':
 
-    concate_and_compute('selective_concepts/mistralai/Mixtral-8x7B-Instruct-v0.1')
-
-    exit()
-    titles = get_titles()
-    # Compute logprobs for concepts in each title
     # model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
     model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
-    model = AutoModelForCausalLM.from_pretrained(model_name, device_map='auto')
+    concate_and_compute(f'selective_concepts/{model_name}')
+    exit()
+    HF_key = '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'
+    login(HF_key)
+    titles = get_titles()
+    # Compute logprobs for concepts in each title
+    # model = AutoModelForCausalLM.from_pretrained(model_name, device_map='auto')
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     tokenizer.pad_token_id = tokenizer.eos_token_id
     
     logprobs_dict_name = 'logprobs'
-    for title in tqdm(titles, desc=f'Compute logprobs for titles'):
-        # Check whether the pkl file logprobs for title exist already
-        if os.path.exists(f'{logprobs_dict_name}/{model_name}/{title}.pkl'):
-            print(f"The file {logprobs_dict_name}/{model_name}/{title}.pkl is already exist and processed. Moving on.")
-            continue 
-        if os.path.exists(f'selective_concepts/{title}.csv'):
-            save_logprobs(model=model, tokenizer=tokenizer, concepts_path=f'selective_concepts/{title}.csv', title=title)
+    # for title in tqdm(titles, desc=f'Compute logprobs for titles'):
+    #     # Check whether the pkl file logprobs for title exist already
+    #     if os.path.exists(f'{logprobs_dict_name}/{model_name}/{title}.pkl'):
+    #         print(f"The file {logprobs_dict_name}/{model_name}/{title}.pkl is already exist and processed. Moving on.")
+    #         continue 
+    #     if os.path.exists(f'selective_concepts/{title}.csv'):
+    #         save_logprobs(model=model, tokenizer=tokenizer, concepts_path=f'selective_concepts/{title}.csv', title=title)
 
     #         if 'unc_mean_logprobs' in selective_df.columns:
     #         print(f"The file selective_concepts/{title}.csv is already exist and processed. Moving on.")
@@ -215,13 +222,13 @@ if __name__ == '__main__':
             with open(f'{logprobs_dict_name}/{model_name}/{title}.pkl', 'rb') as f:
                 logprobs_dict = pickle.load(f)
                 assert(type(logprobs_dict)==dict), f"The loaded object from path {logprobs_dict_name}/{model_name}/{title}.pkl is not a dictionary."
-                concepts_file_path = f'selective_concepts/{title}.csv'
+                concepts_file_path = f'selective_concepts/{model_name}/{title}.csv'
                 df = pd.read_csv(concepts_file_path)
                 # Check whether there is a column starts with 'unc'
-                if not any([c for c in df.columns if 'unc' in c]):
+                # if not any([c for c in df.columns if 'unc' in c]):
                     # print(f"The title {title} already has uncertainty metrics computed. Moving on. Notice to verify that auroc is computed as well.")
                     # continue
-                    compute_uncertainty_metrics(logprobs_dict, concepts_file_path)
+                compute_uncertainty_metrics(logprobs_dict, concepts_file_path)
                 AUROC_dict = {}
                 concept_df = pd.read_csv(concepts_file_path)
                 for metric in [c for c in concept_df.columns if 'unc' in c]:
