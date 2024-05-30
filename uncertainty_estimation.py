@@ -191,24 +191,24 @@ if __name__ == '__main__':
 
     # model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
     model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
-    concate_and_compute(f'selective_concepts/{model_name}')
-    exit()
+    # concate_and_compute(f'selective_concepts/{model_name}')
+    # exit()
     HF_key = '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'
     login(HF_key)
     titles = get_titles()
     # Compute logprobs for concepts in each title
-    # model = AutoModelForCausalLM.from_pretrained(model_name, device_map='auto')
+    model = AutoModelForCausalLM.from_pretrained(model_name, device_map='auto')
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     tokenizer.pad_token_id = tokenizer.eos_token_id
     
     logprobs_dict_name = 'logprobs'
-    # for title in tqdm(titles, desc=f'Compute logprobs for titles'):
-    #     # Check whether the pkl file logprobs for title exist already
-    #     if os.path.exists(f'{logprobs_dict_name}/{model_name}/{title}.pkl'):
-    #         print(f"The file {logprobs_dict_name}/{model_name}/{title}.pkl is already exist and processed. Moving on.")
-    #         continue 
-    #     if os.path.exists(f'selective_concepts/{title}.csv'):
-    #         save_logprobs(model=model, tokenizer=tokenizer, concepts_path=f'selective_concepts/{title}.csv', title=title)
+    for title in tqdm(titles, desc=f'Compute logprobs for titles'):
+        # Check whether the pkl file logprobs for title exist already
+        if os.path.exists(f'{logprobs_dict_name}/{model_name}/{title}.pkl'):
+            print(f"The file {logprobs_dict_name}/{model_name}/{title}.pkl is already exist and processed. Moving on.")
+            continue 
+        if os.path.exists(f'selective_concepts/{model_name}/{title}.csv'):
+            save_logprobs(model=model, tokenizer=tokenizer, concepts_path=f'selective_concepts/{model_name}/{title}.csv', title=title)
 
     #         if 'unc_mean_logprobs' in selective_df.columns:
     #         print(f"The file selective_concepts/{title}.csv is already exist and processed. Moving on.")
@@ -240,65 +240,3 @@ if __name__ == '__main__':
                 with open(f'{auroc_dir}/{model_name}/{title}.json', 'w') as f:
                     json.dump(AUROC_dict, f, indent=4)
                 
-
-    
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        #     print(d)
-        #     print("finished")
-    # df  = pd.read_csv('selective_osama_facts_gpt.csv')
-    # # model_name  = args.model_name
-    # # model_name = 'gpt2'
-    # model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
-    # # prompts_options = [f"Given the following question: {question}, how likely is the following sentence: {concept}?"]
-    
-    # # prompt = prompts_options[0]
-    # # threshold = 0.9999 if 
-    # if 'chatgpt' not in model_name.lower():
-    #     model = AutoModelForCausalLM.from_pretrained(model_name)
-    #     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    #     tokenizer.pad_token_id = tokenizer.eos_token_id
-    #     facts_logprob_dict = {}
-    #     for idx,(_, row) in enumerate(df.iterrows()):
-    #         input = prompt_prepend(row['atom'])
-    #         concept_logprobs = to_tokens_and_logprobs(model, tokenizer, [input], [' '+row['atom']])
-    #         facts_logprob_dict[row['atom']] = concept_logprobs[0] # Save a list of tuples (token, logprob).
-    #     # Save facts_logprob_dict to pkl file
-    #     with open('facts_logprob_dict.pkl', 'wb') as f:
-    #         pickle.dump(facts_logprob_dict, f)
-    #     #load from 'facts_logprob_dict.pkl' into dict named d:
-    #     # with open('facts_logprob_dict.pkl', 'rb') as f:
-    #     #     d = pickle.load(f)
-    #     #     print(d)
-    #     #     print("finished")
-        
-    # else:
-    #     pass
